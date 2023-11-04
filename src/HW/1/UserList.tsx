@@ -1,20 +1,42 @@
+import styled from "styled-components";
+
 type AddressType = {
-  street: any; // ПОДПРАВЛЯЕМ any
-  city: any; // ПОДПРАВЛЯЕМ any
+  street: string; // ПОДПРАВЛЯЕМ any
+  city: string; // ПОДПРАВЛЯЕМ any
 };
 
 type UserType = {
-  // ПРИДЕТСЯ САМОМУ)
-};
+  id: number;
+  name: string,
+  age: number,
+  address: {
+    street: string, 
+    city: string
+  }
+};  // ПРИДЕТСЯ САМОМУ)
 
 type UserListPropsType = {
-  users: UserType; // ПО МОЕМУ ЧЕГО-ТО НЕ ХВАТАЕТ...
+  users: UserType[]; // ПО МОЕМУ ЧЕГО-ТО НЕ ХВАТАЕТ...
 };
 
-export const UserList = (props: 'ВСТАВЛЯЕМ ТИПИЗАЦИЮ') => {
+export const UserList = (props: UserListPropsType) => {
   return (
     <div id={'hw01-users'}>
       <h2>User List:</h2>
+
+      <StlUl>
+       {props.users.map((u, index) =>{
+          return (
+            <ListItem key={index} 
+                id={`hw01-user-${u.id}`}>
+                <strong>{u.name}</strong> 
+                <small>Age:{u.age}</small>
+                <strong> Address:</strong>
+                {u.address.street}, {u.address.city}
+            </ListItem>
+          )}
+        )}
+      </StlUl>
 
       {/*<ul>*/}
       {/*  {props.users.map((user) => ( // ВСЕ ТОВАРЫ В СТРАНУ ПРИЕЗЖАЮТ В КОНТЕЙНЕРАХ, А В РЕАКТЕ...*/}
@@ -27,3 +49,11 @@ export const UserList = (props: 'ВСТАВЛЯЕМ ТИПИЗАЦИЮ') => {
     </div>
   );
 };
+
+const StlUl = styled.ul`
+    margin: 30px 0;
+    list-style-type: none;
+`
+const ListItem = styled.li`
+      margin-bottom: 30px;
+`
