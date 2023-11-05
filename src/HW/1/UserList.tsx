@@ -9,10 +9,7 @@ type UserType = {
   id: number;
   name: string,
   age: number,
-  address: {
-    street: string, 
-    city: string
-  }
+  address: AddressType
 };  // ПРИДЕТСЯ САМОМУ)
 
 type UserListPropsType = {
@@ -27,9 +24,9 @@ export const UserList = (props: UserListPropsType) => {
       <StlUl>
        {props.users.map((u, index) =>{
           return (
-            <ListItem key={index} 
+            <ListItem key={u.id} 
                 id={`hw01-user-${u.id}`}>
-                <strong>{u.name}</strong> 
+                <strong>{u.name}</strong> <br />
                 <small>Age:{u.age}</small>
                 <strong> Address:</strong>
                 {u.address.street}, {u.address.city}
