@@ -21,36 +21,17 @@ export const UserList = (props: UserListPropsType) => {
     <div id={'hw01-users'}>
       <h2>User List:</h2>
 
-      <StlUl>
-       {props.users.map((u, index) =>{
-          return (
-            <ListItem key={u.id} 
+      <ul>
+       {props.users.map((u, index) =>(
+            <li key={u.id}             
                 id={`hw01-user-${u.id}`}>
-                <strong>{u.name}</strong> <br />
-                <small>Age:{u.age}</small>
-                <strong> Address:</strong>
+                <strong>{u.name}</strong> (Age:{u.age})<strong> Address:</strong>
                 {u.address.street}, {u.address.city}
-            </ListItem>
-          )}
-        )}
-      </StlUl>
-
-      {/*<ul>*/}
-      {/*  {props.users.map((user) => ( // ВСЕ ТОВАРЫ В СТРАНУ ПРИЕЗЖАЮТ В КОНТЕЙНЕРАХ, А В РЕАКТЕ...*/}
-      {/*    <li key={ЭЛЕМЕНТ МАССИВА.id} id={`hw01-user-${ЭЛЕМЕНТ МАССИВА.id}`}>*/}
-      {/*      <strong>{ЭЛЕМЕНТ МАССИВА.name}</strong> (Age: {ЭЛЕМЕНТ МАССИВА.age})<strong> Address:</strong>*/}
-      {/*      {ЭЛЕМЕНТ МАССИВА.address.street}, {ЭЛЕМЕНТ МАССИВА.address.city}*/}
-      {/*    </li>*/}
-      {/*  ))}*/}
-      {/*</ul>*/}
+            </li>
+        ))}        
+      </ul>
     </div>
   );
 };
 
-const StlUl = styled.ul`
-    margin: 30px 0;
-    list-style-type: none;
-`
-const ListItem = styled.li`
-      margin-bottom: 30px;
-`
+

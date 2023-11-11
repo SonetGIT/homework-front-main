@@ -10,12 +10,14 @@ export type UserType = {
   id: number;
   name: string;
   age: number;
-  address: any; // пропиши типизацию
+  address: AddressType; // пропиши типизацию
 };
 
 export type UsersObjectType = {
-  myFriends: any; // пропиши типизацию
+  myFriends: UserType[]; // пропиши типизацию
 };
+
+export type FilterValuesType = 'Los Angeles'
 
 export const HW2 = () => {
 
@@ -43,17 +45,22 @@ export const HW2 = () => {
       { id: 10, name: 'Emily', age: 55, address: { street: '765 Aspen Blvd', city: 'Los Angeles' } },
     ]
   }
+  // debugger
 
   let [currentUsers, setCurrentUsers] = useState<UsersObjectType>(users);
 
-  const filterUsers = () => {
-    const filteredUsers = 'НУЖНО ПРОФИЛЬТРОВАТЬ ДРУЗЕЙ. ОСТАВЛЯЕМ ТОЛЬКО ТЕХ, КОТОРЫЕ ЖИВУТ В ГОРОДЕ LOS ANGELES';
+  const filterUsers = () => {    
+    const filteredUsers = users.myFriends.filter((fU) => fU.address.city === 'Los Angeles')
     setCurrentUsers({ myFriends: filteredUsers });
+    
+    console.log(setCurrentUsers)
+
   };
 
   return (
     <div id={'hw02'}>
-      <UserList2 users={currentUsers} filterUsers={filterUsers} />
+      <UserList2 users={currentUsers} 
+                 filterUsers={filterUsers} />
     </div>
   );
 };
