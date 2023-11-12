@@ -1,4 +1,4 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 
 type AddressType = {
   street: string; // ПОДПРАВЛЯЕМ any
@@ -22,10 +22,9 @@ export const UserList = (props: UserListPropsType) => {
       <h2>User List:</h2>
 
       <ul>
-       {props.users.map((u, index) =>(
-            <li key={u.id}             
-                id={`hw01-user-${u.id}`}>
-                <strong>{u.name}</strong> (Age:{u.age})<strong> Address:</strong>
+       {props.users.map((u) =>(
+            <li key={u.id} id={`hw01-user-${u.id}`}>
+                <strong>{u.name}</strong> (Age: {u.age})<strong> Address:</strong>
                 {u.address.street}, {u.address.city}
             </li>
         ))}        
