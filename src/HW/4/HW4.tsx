@@ -40,11 +40,13 @@ export const HW4 = () => {
 
       <ol id={'hw04-tasks'}>
        {texts.map((el, index) => {
+        console.log('TEST', index % 2)
          return (
           // bool === true ? 'true' : 'false'
-            <li key={index} id={`hw04-task-${index}`} className={index % 2  ? s.chetNechet : ''}> 
-              {el}                                               
-            </li>
+            <li key={index} id={`hw04-task-${index}`} className={index % 2 === 0 ? s.chetNechet : ''}>          
+              {el}
+              
+            </li>            
           );
         })}
       </ol>
